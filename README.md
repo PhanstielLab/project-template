@@ -2,13 +2,43 @@
 
 This is a template for R analysis projects for the Phanstiel lab.
 
-## What to put in this file
+## How to use this template
 
-The README contains information about your project, but most importantly, it contains information about how the raw data was generated in this project.
+1.  Create a repository from this template according to these instructions: <https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template>
+
+2.  Then clone your new repository locally:
+
+    ``` bash
+    git clone https://github.com/{YourUserName}/{YourRepoName}.git
+    ```
+
+3.  Rename the `project-template.Rproj` file to `{YourRepoName}.Rproj`
+
+4.  Either run the example with `make`:
+
+    ``` bash
+    make
+    ```
+
+    Or clean out the example content and start your repo:
+
+    -   Remove scripts: `rm scripts/processing/* scripts/analysis/* scripts/utils/*`
+
+    -   Clear out `Makefile` objects and rules.
+
+    -   Replace `README.md` with your project description
+
+## What to put in `README.md`
+
+The README contains information about your project. Here you can describe your analyses, processing steps, or approaches. Most importantly, the README should contain information about your raw data. Describe 1) how the raw data was generated, 2) where it was obtained, and 3) how it can be accessed for others. This is the perfect place to describe steps that were carried out on the command line or on a remote cluster.
 
 ## Makefile
 
-The `Makefile` is like a recipe book that describes the desired output files, the input files used to make them and the instructions for transforming inputs into outputs. Everytime you create an output file of any type, make sure to add it to the `Makefile`. This ensures that file changes and scripts can be recreated which ensures reproducibility. Resources for learning GNU make:
+The `Makefile` is like a recipe book that describes the desired output files, the input files used to make them and the instructions for transforming inputs into outputs. Everytime you create an output file of any type, make sure to add it to the `Makefile`. This ensures that changes to your scripts will produce the most up-to-date outputs after running `make`.
+
+In the terminal, navigate to the project directory and run `make` to build all objects and `make clean` to remove all objects. Alternatively, use the `build` tab in RStudio.
+
+Resources for learning GNU make:
 
 -   <https://www.gnu.org/software/make/manual/make.html>
 
@@ -17,7 +47,7 @@ The `Makefile` is like a recipe book that describes the desired output files, th
 ## Directory organization
 
 -   `data`
-    -   Contains all "processed" data for the project. Whether data is "processed" is subjective, however, we conider data to be processed if it was produced by an Rscript. Since the `Makefile` will generate the contents of this folder, files should not be tracked by git (add to `.gitignore`).
+    -   Contains all "processed" data for the project. Whether data is "processed" is subjective, however, we consider data to be processed if it was produced by an Rscript. Since the `Makefile` will generate the contents of this folder, files should not be tracked by git (add to `.gitignore`).
 -   `data/raw`
     -   Contains all input files needed for analysis that are not produced in this project. Example would be loop calls, `.hic` files, and other large data. Contents can be suborganized into folders as desired. Since these files are typically large, files are not tracked through git (add to .gitignore). However, these files should not be deleted since they are used to generate all processed data in the analysis.
 -   `scripts`

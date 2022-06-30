@@ -1,21 +1,21 @@
 .PHONY: clean
 
-all:\
+objects :=\
 	data/greeting.rds\
 	plots/example.pdf\
 	tables/example.txt
 
+all: $(objects)
+
 clean:
-	rm -rf data/greeting.rds
-	rm -rf plots/example.pdf
-	rm -rf tables/example.txt
-	
+	rm -rf $(objects)
+
 data/greeting.rds:\
 	scripts/utils/sayHello.R\
 	scripts/processing/makeGreeting.R
 		mkdir -p data
 		Rscript scripts/processing/makeGreeting.R
-	
+
 plots/example.pdf\
 tables/example.txt:\
 	scripts/utils/sayHello.R\
